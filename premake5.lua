@@ -26,6 +26,7 @@ project "Hazel"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -90,7 +91,6 @@ project "Sandbox"
 
 		defines
 		{
-			"HZ_BUILD_DLL",
 			"HZ_PLATFORM_WINDOWS"
 		}
 
