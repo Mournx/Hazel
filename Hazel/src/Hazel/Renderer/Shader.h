@@ -15,7 +15,9 @@ namespace Hazel {
 
 		void Bind() const;
 		void Unbind() const;
+		void UploadUniformFloat4(const std::string& name, const glm::vec4& color) const;
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) const;
+		void UploadUniformInt(const std::string& name, int value) const;
 	private:
 		uint32_t m_RendererID;
 	};
