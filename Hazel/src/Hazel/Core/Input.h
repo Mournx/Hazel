@@ -4,8 +4,10 @@
 
 namespace Hazel {
 
-	class HAZEL_API Input
+	class Input
 	{
+	protected:
+		Input() = default;
 	public:
 		inline static bool IsKeyPressed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }
 
