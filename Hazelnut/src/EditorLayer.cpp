@@ -29,6 +29,13 @@ namespace Hazel {
 		square.AddComponent<SpriteRendererComponent>(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
 		m_SquareEntity = square;
+
+		m_MainCamera = m_ActiveScene->CreateEntity("Main Camera Entity");
+		m_MainCamera.AddComponent<CameraComponent>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+
+		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
+		auto& sc =m_SecondCamera.AddComponent<CameraComponent>(glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f));
+		sc.Primary = false;
 	}
 
 	void EditorLayer::OnDetach()
@@ -62,12 +69,8 @@ namespace Hazel {
 		}
 		{
 			HZ_PROFILE_SCOPE("Renderer Draw")
-
-			Renderer2D::BeginScene(m_CameraController.GetCamera());
 			
 			m_ActiveScene->OnUpdate(ts);
-
-			Renderer2D::EndScene();
 
 			m_Framebuffer->Unbind();
 		}
@@ -146,6 +149,14 @@ namespace Hazel {
 			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
 			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 			ImGui::Separator();
+		}
+
+		ImGui::DragFloat3("Camera Transform", glm::value_ptr(m_MainCamera.GetComponent<TransformComponent>().Transform[3]));
+
+		if (ImGui::Checkbox("Main Camera", &m_PrimaryCamera))
+		{
+			m_MainCamera.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
 		}
 
 		ImGui::End();
