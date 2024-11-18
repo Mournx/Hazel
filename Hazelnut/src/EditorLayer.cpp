@@ -34,8 +34,40 @@ namespace Hazel {
 		m_MainCamera.AddComponent<CameraComponent>();
 
 		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
-		auto& sc =m_SecondCamera.AddComponent<CameraComponent>();
+		auto& sc = m_SecondCamera.AddComponent<CameraComponent>();
 		sc.Primary = false;
+
+		class CameraController : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+				auto& transform = GetComponent<TransformComponent>().Transform;
+				transform[3][0] = rand() % 10 - 5.0f;
+			}
+
+			void OnDestroy()
+			{
+			}
+
+			void OnUpdate(Timestep ts)
+			{
+				auto& transform = GetComponent<TransformComponent>().Transform;
+				float speed = 5.0f;
+
+				if (Input::IsKeyPressed(HZ_KEY_A))
+					transform[3][0] -= speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_D))
+					transform[3][0] += speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_S))
+					transform[3][1] -= speed * ts;
+				if (Input::IsKeyPressed(HZ_KEY_W))
+					transform[3][1] += speed * ts;
+			}
+		};
+
+		m_MainCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 	}
 
 	void EditorLayer::OnDetach()
