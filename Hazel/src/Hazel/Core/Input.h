@@ -1,16 +1,19 @@
 #pragma once
 
-#include "Hazel/Core/Core.h"
+#include <glm/glm.hpp>
+
+#include "Hazel/Core/KeyCodes.h"
+#include "Hazel/Core/MouseCodes.h"
 
 namespace Hazel {
 
 	class Input
 	{
 	public:
-		static bool IsKeyPressed(int keycode);
+		static bool IsKeyPressed(const KeyCode keycode);
 
-		static bool IsMouseButtonPressed(int button);
-		static std::pair<float, float> GetMousePosition();
+		static bool IsMouseButtonPressed(const MouseCode button);
+		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();
 	};

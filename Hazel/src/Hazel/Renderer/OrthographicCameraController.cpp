@@ -14,23 +14,23 @@ namespace Hazel {
 	{
 		HZ_PROFILE_FUNCTION()
 
-		if (Hazel::Input::IsKeyPressed(HZ_KEY_A))
+		if (Hazel::Input::IsKeyPressed(Key::A))
 		{
 			m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y -= sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
-		else if (Hazel::Input::IsKeyPressed(HZ_KEY_D))
+		else if (Hazel::Input::IsKeyPressed(Key::D))
 		{
 			m_CameraPosition.x += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y += sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
 
-		if (Hazel::Input::IsKeyPressed(HZ_KEY_S))
+		if (Hazel::Input::IsKeyPressed(Key::S))
 		{
 			m_CameraPosition.x -= sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
-		else if (Hazel::Input::IsKeyPressed(HZ_KEY_W))
+		else if (Hazel::Input::IsKeyPressed(Key::W))
 		{
 			m_CameraPosition.x += sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
@@ -38,9 +38,9 @@ namespace Hazel {
 
 		if (m_Rotation)
 		{
-			if (Hazel::Input::IsKeyPressed(HZ_KEY_Q))
+			if (Hazel::Input::IsKeyPressed(Key::Q))
 				m_CameraRotation += cos(glm::radians(m_CameraRotation)) * m_CameraRotationSpeed * ts;
-			else if (Hazel::Input::IsKeyPressed(HZ_KEY_E))
+			else if (Hazel::Input::IsKeyPressed(Key::E))
 				m_CameraRotation -= cos(glm::radians(m_CameraRotation)) * m_CameraRotationSpeed * ts;
 
 			if (m_CameraRotation > 180.0f)

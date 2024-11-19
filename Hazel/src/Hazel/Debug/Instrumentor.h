@@ -4,8 +4,12 @@
 #include <chrono>
 #include <algorithm>
 #include <fstream>
-
+#include <iomanip>
+#include <mutex>
+#include <sstream>
 #include <thread>
+
+#include "Hazel/Core/Log.h"
 
 namespace Hazel {
 
