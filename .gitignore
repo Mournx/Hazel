@@ -1,8 +1,14 @@
-# Directories
-.vs/
-/bin/
+# Binaries
+**/bin/
+!vendor/premake/bin/
 bin-int/
 
-# Files
-*.user
-imgui.ini
+# HZ files
+*.log
+
+# VS files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
