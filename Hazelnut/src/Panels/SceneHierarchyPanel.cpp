@@ -180,7 +180,7 @@ namespace Hazel {
 
 				ImGui::EndPopup();
 			}
-
+		
 			if (open)
 			{
 				uiFunction(component);
