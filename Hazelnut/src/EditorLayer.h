@@ -24,6 +24,12 @@ namespace Hazel {
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);
 		void SaveSceneAs();
+
+		void OnScenePlay();
+		void OnSceneStop();
+
+		//UI Panels
+		void UI_Toolbar();
 	private:
 		Hazel::OrthographicCameraController m_CameraController;
 	
@@ -42,6 +48,7 @@ namespace Hazel {
 		EditorCamera m_EditorCamera;
 
 		Ref<Texture2D> m_CheckerboardTexture;
+		Ref<Texture2D> m_IconPlay, m_IconStop;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
@@ -50,6 +57,12 @@ namespace Hazel {
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
 		int m_GizmoType = -1;
+
+		enum class SceneState
+		{
+			Edit = 0, Play = 1
+		};
+		SceneState m_SceneState = SceneState::Edit;
 
 		//Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
