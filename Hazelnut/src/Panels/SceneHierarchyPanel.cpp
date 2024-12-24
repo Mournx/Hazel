@@ -26,22 +26,25 @@ namespace Hazel {
 	void SceneHierarchyPanel::OnImGuiRender()
 	{
 		ImGui::Begin("Scene Hierarchy");
-		for (auto entityID : m_Context->m_Registry.view<entt::entity>())
+		if (m_Context)
 		{
-			Entity entity{ entityID , m_Context.get() };
-			DrawEntityNode(entity);
-		}
+			for (auto entityID : m_Context->m_Registry.view<entt::entity>())
+			{
+				Entity entity{ entityID , m_Context.get() };
+				DrawEntityNode(entity);
+			}
 
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-			m_SelectionContext = {};
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_SelectionContext = {};
 
-		//Right Click on blank space
-		if (ImGui::BeginPopupContextWindow(0, 1 | ImGuiPopupFlags_NoOpenOverItems))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
-				m_Context->CreateEntity("Empty Entity");
+			//Right Click on blank space
+			if (ImGui::BeginPopupContextWindow(0, 1 | ImGuiPopupFlags_NoOpenOverItems))
+			{
+				if (ImGui::MenuItem("Create Empty Entity"))
+					m_Context->CreateEntity("Empty Entity");
 
-			ImGui::EndPopup();
+				ImGui::EndPopup();
+			}
 		}
 
 		ImGui::End();
