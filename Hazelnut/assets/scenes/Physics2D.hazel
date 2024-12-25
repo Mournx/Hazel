@@ -4,9 +4,9 @@ Entities:
     TagComponent:
       Tag: Floor
     TransformComponent:
-      Translation: [4.68502235, -3.4750483, 0]
-      Rotation: [0, 0, 0.596864522]
-      Scale: [6.74196339, 0.460678279, 1]
+      Translation: [3.104568, -0.689845145, 0]
+      Rotation: [0, 0, 0.701883495]
+      Scale: [6.74195814, 0.46067822, 1]
     SpriteRendererComponent:
       Color: [0.949806929, 0.455301404, 0.0660097376, 1]
     Rigidbody2DComponent:
@@ -24,8 +24,8 @@ Entities:
       Tag: Floor
     TransformComponent:
       Translation: [-1.9972434, -0.533654511, 0]
-      Rotation: [0, 0, -0.414657086]
-      Scale: [6.74196911, 0.46067819, 1]
+      Rotation: [0, 0, -0.776467025]
+      Scale: [6.74196959, 0.46067825, 1]
     SpriteRendererComponent:
       Color: [0.949806929, 0.455301404, 0.0660097376, 1]
     Rigidbody2DComponent:
@@ -119,6 +119,46 @@ Entities:
     BoxCollider2DComponent:
       Offset: [0, 0]
       Size: [0.100000001, 0.100000001]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 5354236177272578928
+    TagComponent:
+      Tag: Circle
+    TransformComponent:
+      Translation: [1.16902733, -0.069447279, 0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    CircleRendererComponent:
+      Color: [1, 0.569105685, 0, 1]
+      Thickness: 0.100000001
+      Fade: 0.00499999989
+    Rigidbody2DComponent:
+      BodyType: Dynamic
+      FixedRotation: true
+    CircleCollider2DComponent:
+      Offset: [0, 0]
+      Radius: 0.5
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 6663568254975387461
+    TagComponent:
+      Tag: Floor
+    TransformComponent:
+      Translation: [4.68502235, -3.4750483, 0]
+      Rotation: [0, 0, 0.596864462]
+      Scale: [6.74196434, 0.460678309, 1]
+    SpriteRendererComponent:
+      Color: [0.949806929, 0.455301404, 0.0660097376, 1]
+    Rigidbody2DComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
       Density: 1
       Friction: 0.5
       Restitution: 0

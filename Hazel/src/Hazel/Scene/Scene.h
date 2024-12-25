@@ -33,6 +33,12 @@ namespace Hazel {
 
 		void DuplicateEntity(Entity entity);
 
+		template<typename... Components>
+		auto GetAllEntitiesWith()
+		{
+			return m_Registry.view<Components...>();
+		}
+
 		Entity GetPrimaryCameraEntity();
 	private:
 		template<typename T>
