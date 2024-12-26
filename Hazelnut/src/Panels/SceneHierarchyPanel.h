@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazel/Core/Core.h"
+#include "Hazel/Core/Base.h"
 #include "Hazel/Core/Log.h"
 #include "Hazel/Scene/Scene.h"
 #include "Hazel/Scene/Entity.h"
@@ -20,6 +20,9 @@ namespace Hazel {
 		void SetSelectedEntity(Entity entity);
 		Entity GetSelectedEntity() const { return m_SelectionContext; }
 	private:
+		template<typename T>
+		void DisplayAddComponentEntity(const std::string& entryName);
+
 		void DrawEntityNode(Entity entity);
 		void DrawComponents(Entity entity);
 	private:

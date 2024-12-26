@@ -1,13 +1,12 @@
 #include "hzpch.h"
 #include "Scene.h"
+#include "Entity.h"
 
 #include "Components.h"
 #include "Hazel/Scene/ScriptableEntity.h"
 #include "Hazel/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>
-
-#include "Entity.h"
 
 // Box2D
 #include "box2d/b2_world.h"
@@ -394,7 +393,7 @@ namespace Hazel {
 	template<typename T>
 	void Scene::OnComponentAdded(Entity entity, T& component)
 	{
-		static_assert(false);
+		static_assert(sizeof(T) == 0);
 	}
 
 	template<>
